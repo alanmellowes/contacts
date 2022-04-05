@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.search (params[:search])
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -20,6 +20,8 @@ class ContactsController < ApplicationController
   # GET /contacts/1/edit
   def edit
   end
+
+  
 
   # POST /contacts or /contacts.json
   def create
@@ -72,6 +74,6 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.require(:contact).permit(:fname, :lname, :email, :phone, :instagram, :user_id)
+      params.require(:contact).permit(:fname, :lname, :email, :phone, :instagram, :user_id, :search)
     end
 end
